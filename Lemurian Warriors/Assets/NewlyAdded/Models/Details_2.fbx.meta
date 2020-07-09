@@ -1,0 +1,185 @@
+fileFormatVersion: 2
+guid: 31533802a509bbf4b8366db8e66de492
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: CircleArea
+    100002: //RootNode
+    100004: EdgeGaurdBoxCorner
+    100006: EdgeGaurdBoxFill
+    100008: EdgeGaurdBoxStr8
+    100010: EdgeGaurdCorner
+    100012: EdgeGaurdPillar
+    100014: EdgeGaurdStr8
+    100016: Pillar_LargeBlocks
+    100018: PillarCrackin
+    100020: PlanterBox
+    100022: PlanterPillar
+    100024: RockGround
+    100026: StairPillar
+    100028: StairsInner
+    100030: StairsLow
+    100032: StairsOuter
+    100034: EdgeGaurdInnerCorner
+    400000: CircleArea
+    400002: //RootNode
+    400004: EdgeGaurdBoxCorner
+    400006: EdgeGaurdBoxFill
+    400008: EdgeGaurdBoxStr8
+    400010: EdgeGaurdCorner
+    400012: EdgeGaurdPillar
+    400014: EdgeGaurdStr8
+    400016: Pillar_LargeBlocks
+    400018: PillarCrackin
+    400020: PlanterBox
+    400022: PlanterPillar
+    400024: RockGround
+    400026: StairPillar
+    400028: StairsInner
+    400030: StairsLow
+    400032: StairsOuter
+    400034: EdgeGaurdInnerCorner
+    2100000: Atlas.004
+    2100002: Atlas.008
+    2100004: Atlas.011
+    2100006: Atlas.009
+    2100008: Atlas.005
+    2100010: Atlas.010
+    2100012: Atlas.051
+    2300000: CircleArea
+    2300002: EdgeGaurdBoxCorner
+    2300004: EdgeGaurdBoxFill
+    2300006: EdgeGaurdBoxStr8
+    2300008: EdgeGaurdCorner
+    2300010: EdgeGaurdPillar
+    2300012: EdgeGaurdStr8
+    2300014: Pillar_LargeBlocks
+    2300016: PillarCrackin
+    2300018: PlanterBox
+    2300020: PlanterPillar
+    2300022: RockGround
+    2300024: StairPillar
+    2300026: StairsInner
+    2300028: StairsLow
+    2300030: StairsOuter
+    2300032: EdgeGaurdInnerCorner
+    3300000: CircleArea
+    3300002: EdgeGaurdBoxCorner
+    3300004: EdgeGaurdBoxFill
+    3300006: EdgeGaurdBoxStr8
+    3300008: EdgeGaurdCorner
+    3300010: EdgeGaurdPillar
+    3300012: EdgeGaurdStr8
+    3300014: Pillar_LargeBlocks
+    3300016: PillarCrackin
+    3300018: PlanterBox
+    3300020: PlanterPillar
+    3300022: RockGround
+    3300024: StairPillar
+    3300026: StairsInner
+    3300028: StairsLow
+    3300030: StairsOuter
+    3300032: EdgeGaurdInnerCorner
+    4300000: EdgeGaurdBoxStr8
+    4300002: EdgeGaurdPillar
+    4300004: PillarCrackin
+    4300006: CircleArea
+    4300008: Pillar_LargeBlocks
+    4300010: PlanterBox
+    4300012: StairPillar
+    4300014: PlanterPillar
+    4300016: EdgeGaurdCorner
+    4300018: EdgeGaurdBoxCorner
+    4300020: EdgeGaurdBoxFill
+    4300022: RockGround
+    4300024: EdgeGaurdStr8
+    4300026: StairsOuter
+    4300028: StairsInner
+    4300030: StairsLow
+    4300032: EdgeGaurdInnerCorner
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 0
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

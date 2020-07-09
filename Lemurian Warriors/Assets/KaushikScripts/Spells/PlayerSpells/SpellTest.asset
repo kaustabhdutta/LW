@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15fd17a0909f6d44db27f46d57b70b4e, type: 3}
+  m_Name: SpellTest
+  m_EditorClassIdentifier: 
+  spellName: 
+  spellIcon: {fileID: 0}
+  Type: 1
+  Animation: 7
+  origin: 1
+  AOERadius: 1.25
+  AOEDuration: 1.37
+  damType: 0
+  baseDamage: 2
+  hitDuration: 0
+  stat: 0
+  statMultiplier: 0
+  buffDuration: 0
+  cooldownTime: 0.5
+  VFX: {fileID: 3015373495074178571, guid: 03a497cf2887f9642be76787bbdbdfc7, type: 3}
+  clickToCast: 1
+  lifetime: 0
+  castDelay: 1
+  endLag: 0
+  bufferTime: 0
+  totalCastTime: 1
+  canMoveDuring: 0
+  resetDestinationAfter: 0
+  canCast: 1
+  straightLine: 0
+  launchSpeed: 20
+  gravScale: 9.81
+  minAngle: 0
+  VFXSpawnPos: {x: 0, y: 1, z: 0}
+  aimObjScale: {x: 1, y: 1, z: 1}
+  Caster: {fileID: 0}
+  aimObject: {fileID: -927199367670048503, guid: c5685f56595634640ad175f1e7715476,
+    type: 3}

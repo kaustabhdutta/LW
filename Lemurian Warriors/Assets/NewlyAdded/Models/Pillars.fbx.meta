@@ -1,0 +1,152 @@
+fileFormatVersion: 2
+guid: eb81b7ee0e487a74f8b8048b7090cacb
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: Clyindrical Pillar
+    100002: InnerCornerFill
+    100004: InnerPillar2
+    100006: Pillar 1
+    100008: Pillar_Large
+    100010: Pillar_Small
+    100012: //RootNode
+    400000: Clyindrical Pillar
+    400002: InnerCornerFill
+    400004: InnerPillar2
+    400006: Pillar 1
+    400008: Pillar_Large
+    400010: Pillar_Small
+    400012: //RootNode
+    2100000: Atlas
+    2100002: Atlas.002
+    2100004: Atlas.001
+    2100006: Atlas.003
+    2100008: Atlas.087
+    2100010: Atlas.086
+    2100012: Atlas.085
+    2100014: Atlas.084
+    2100016: Atlas.083
+    2100018: Atlas.082
+    2100020: Atlas.081
+    2100022: Atlas.080
+    2100024: Atlas.079
+    2100026: Atlas.078
+    2100028: Atlas.077
+    2100030: Atlas.076
+    2100032: Atlas.075
+    2100034: Atlas.124
+    2100036: Atlas.123
+    2100038: Atlas.122
+    2100040: Atlas.121
+    2100042: Atlas.120
+    2100044: Atlas.119
+    2100046: Atlas.118
+    2100048: Atlas.117
+    2100050: Atlas.116
+    2100052: Atlas.115
+    2100054: Atlas.114
+    2100056: Atlas.113
+    2300000: Clyindrical Pillar
+    2300002: InnerCornerFill
+    2300004: InnerPillar2
+    2300006: Pillar 1
+    2300008: Pillar_Large
+    2300010: Pillar_Small
+    3300000: Clyindrical Pillar
+    3300002: InnerCornerFill
+    3300004: InnerPillar2
+    3300006: Pillar 1
+    3300008: Pillar_Large
+    3300010: Pillar_Small
+    4300000: InnerCornerFill
+    4300002: Pillar_Large
+    4300004: Pillar_Small
+    4300006: Clyindrical Pillar
+    4300008: Pillar 1
+    4300010: InnerPillar2
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 0
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
