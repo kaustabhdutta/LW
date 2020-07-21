@@ -56,8 +56,8 @@ public class FootageEnemy : EnemyBase
         }
         Debug.Log(state);
         anim.SetInteger("State", (int)state);
-        anim.SetFloat("MovementCos", VectorMath.DistanceInDirection(navAgent.velocity.normalized, transform.forward) * navAgent.velocity.magnitude / sprintSpeed);
-        anim.SetFloat("MovementSin", VectorMath.DistanceInDirection(navAgent.velocity.normalized, transform.right) * navAgent.velocity.magnitude / sprintSpeed);
+        anim.SetFloat("MovementCos", VectorMath.DistanceInDirection(navAgent.velocity.normalized, transform.right));
+        anim.SetFloat("MovementSin", VectorMath.DistanceInDirection(navAgent.velocity.normalized, transform.forward));
     }
     protected override void TakeDamage(Hitbox hit)
     {

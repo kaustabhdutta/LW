@@ -85,7 +85,8 @@ public class NewPlayerController : CharacterBase
             //can act if idle
         }
         //Debug.Log(canAct);
-        anim.SetFloat("Speed", navAgent.velocity.magnitude / sprintSpeed);
+        anim.SetFloat("MovementCos", VectorMath.DistanceInDirection(navAgent.velocity, transform.right));
+        anim.SetFloat("MovementSin", VectorMath.DistanceInDirection(navAgent.velocity, transform.forward));
         HideAimObjects();
         cameraRay = Camera.main.ScreenPointToRay(Input.mousePosition);
         Vector3 tempAimPos = transform.position;

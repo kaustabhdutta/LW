@@ -82,8 +82,8 @@ BlendTree:
     m_CycleOffset: 0
     m_DirectBlendParameter: MovementCos
     m_Mirror: 0
-  m_BlendParameter: MovementSin
-  m_BlendParameterY: MovementCos
+  m_BlendParameter: MovementCos
+  m_BlendParameterY: MovementSin
   m_MinThreshold: 0.5
   m_MaxThreshold: 1
   m_UseAutomaticThresholds: 1
@@ -244,7 +244,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: -3554469013500874231, guid: 3b486fc269ccc6f45883891251e8f805,
+  m_Motion: {fileID: 2963219463598164401, guid: da6df75a2dd6edc4c893ba231a2354b0,
     type: 3}
   m_Tag: 
   m_SpeedParameter: 
