@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: 2ff4b11de8604ff4d86dbbbecf26fe04
+guid: eb484524f6f84544084aff13bb7f6c9f
 ModelImporter:
   serializedVersion: 19300
   internalIDToNameTable:
   - first:
-      74: -1446463554303443838
-    second: model
+      74: 3465291743688299583
+    second: L_Run
   externalObjects: {}
   materials:
     materialImportMode: 1
@@ -70,26 +70,7 @@ ModelImporter:
     legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
     blendShapeNormalImportMode: 1
     normalSmoothingSource: 0
-  referencedClips:
-  - 98b6382a1556cc744ab035439bb4b8c3
-  - 145ef14bab2199d4d94c3c248c23373a
-  - a69f452052de3664ba04a26da4c621de
-  - d5560763c64cada4399b82cfe327965f
-  - bcb94c829583de34fafff82db3a42a5d
-  - cd3d6236bb3ce6e4eb9e6534b2c49373
-  - 96e1aec7a994497488ccc98da7643136
-  - eeb064f836ea66040a63688c84f18f79
-  - 1e6b2c488b6047b4da932e17e4fef32a
-  - 67131c51d5aa2f4479fffe165b9b46c5
-  - 08ec5a3ad3a21764193d34b733e32860
-  - c4dd451f7e765a746a11e8c3415c1898
-  - d163596467ba59246961af9e70302da0
-  - 1d953538d5bf24640bf0d7b907dd9ae6
-  - c6f8e89b439099a4588c4114d8317de4
-  - ca0dc62884c3a404aa454af2558ab34a
-  - 71545922fcf48b7449efb10aaf679411
-  - cd08a8f6ed7ecb446a3a625af204e0bc
-  - 652c0464b192c7b4c95c6924567e6ebf
+  referencedClips: []
   importAnimation: 1
   humanDescription:
     serializedVersion: 3
@@ -111,7 +92,7 @@ ModelImporter:
   autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 2
   humanoidOversampling: 1
-  avatarSetup: 1
+  avatarSetup: 0
   additionalBone: 0
   userData: 
   assetBundleName: 
