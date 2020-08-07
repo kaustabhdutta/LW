@@ -1,14 +1,11 @@
 fileFormatVersion: 2
-guid: 73e0f31227ce6674097fecd50526044b
+guid: 18df6f15a89f5b14db568efa15906b60
 ModelImporter:
   serializedVersion: 19300
   internalIDToNameTable:
   - first:
-      74: -3100369314251171874
-    second: Idle
-  - first:
-      74: -2797134668357508131
-    second: Idel
+      74: -6758483313513240000
+    second: death
   externalObjects: {}
   materials:
     materialImportMode: 1
