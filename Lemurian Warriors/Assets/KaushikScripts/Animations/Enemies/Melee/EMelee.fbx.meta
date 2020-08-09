@@ -34,7 +34,7 @@ ModelImporter:
     isReadable: 0
   meshes:
     lODScreenPercentages: []
-    globalScale: 25
+    globalScale: 1
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
@@ -68,16 +68,10 @@ ModelImporter:
     blendShapeNormalImportMode: 1
     normalSmoothingSource: 0
   referencedClips:
-  - 18df6f15a89f5b14db568efa15906b60
-  - d06a3364208e5ac428745996039644fd
-  - ec1ac73c5c4e8c948997f0ef663bc5f2
+  - a52b39853c0d6b94da69e5ae13484879
   - 73e0f31227ce6674097fecd50526044b
-  - 39a6774cc0d67c24a9250a2c3953e2f6
-  - 359862cdb4389234f821559d026da734
   - eb484524f6f84544084aff13bb7f6c9f
   - 75705fa916bf6414f978a1516f81c510
-  - 357bbb4ee8520f54ba73125a7319a41a
-  - 2a90e7ac274a69346b90fe4248ccd4d2
   - d91f2105a0e56394d9178cec81686b09
   - 39125a6587223ef41b17bf3c95b7e7b7
   - a29a25fd753b31442b89b85ce383020c
@@ -93,8 +87,8 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 25
-    rootMotionBoneName: group11
+    globalScale: 1
+    rootMotionBoneName: bn_root01
     hasTranslationDoF: 0
     hasExtraRoot: 0
     skeletonHasParents: 1
@@ -102,7 +96,7 @@ ModelImporter:
   autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 2
   humanoidOversampling: 1
-  avatarSetup: 0
+  avatarSetup: 1
   additionalBone: 0
   userData: 
   assetBundleName: 

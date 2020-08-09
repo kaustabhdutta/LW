@@ -1,11 +1,8 @@
 fileFormatVersion: 2
-guid: ec1ac73c5c4e8c948997f0ef663bc5f2
+guid: 9e5586f5cd36007428b1aac0623fd185
 ModelImporter:
   serializedVersion: 19300
-  internalIDToNameTable:
-  - first:
-      74: -3554469013500874231
-    second: Flinch
+  internalIDToNameTable: []
   externalObjects: {}
   materials:
     materialImportMode: 1
@@ -37,7 +34,7 @@ ModelImporter:
     isReadable: 0
   meshes:
     lODScreenPercentages: []
-    globalScale: 1
+    globalScale: 0.3048
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
@@ -70,7 +67,17 @@ ModelImporter:
     legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
     blendShapeNormalImportMode: 1
     normalSmoothingSource: 0
-  referencedClips: []
+  referencedClips:
+  - 18df6f15a89f5b14db568efa15906b60
+  - c24cc8a3643244a40abfba5afb16da77
+  - c46836aa630357d438a1b6a91e20266f
+  - 39a6774cc0d67c24a9250a2c3953e2f6
+  - 359862cdb4389234f821559d026da734
+  - ea42ff52c116e344bab4de9ed007b2ae
+  - 3cf2c6f17ddeea54ca0a38b62b7ef1a8
+  - 357bbb4ee8520f54ba73125a7319a41a
+  - 72e742b095aa07444bd2cb5d7f1bc519
+  - 165e39686b95d654e9e393e515d7705d
   importAnimation: 1
   humanDescription:
     serializedVersion: 3
@@ -83,7 +90,7 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 1
+    globalScale: 0.3048
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0

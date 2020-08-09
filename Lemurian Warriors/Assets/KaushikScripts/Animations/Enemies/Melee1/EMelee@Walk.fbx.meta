@@ -1,11 +1,14 @@
 fileFormatVersion: 2
-guid: 18df6f15a89f5b14db568efa15906b60
+guid: 357bbb4ee8520f54ba73125a7319a41a
 ModelImporter:
   serializedVersion: 19300
   internalIDToNameTable:
   - first:
-      74: -6758483313513240000
-    second: death
+      74: 8558160847138889625
+    second: locomotion
+  - first:
+      74: 6208595785146723576
+    second: Locomotion
   externalObjects: {}
   materials:
     materialImportMode: 1
@@ -37,7 +40,7 @@ ModelImporter:
     isReadable: 0
   meshes:
     lODScreenPercentages: []
-    globalScale: 1
+    globalScale: 0.3048
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
@@ -83,7 +86,7 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 1
+    globalScale: 0.003048
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0

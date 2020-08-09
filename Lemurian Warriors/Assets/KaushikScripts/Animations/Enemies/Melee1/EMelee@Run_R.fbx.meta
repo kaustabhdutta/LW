@@ -1,14 +1,11 @@
 fileFormatVersion: 2
-guid: 39a6774cc0d67c24a9250a2c3953e2f6
+guid: 3cf2c6f17ddeea54ca0a38b62b7ef1a8
 ModelImporter:
   serializedVersion: 19300
   internalIDToNameTable:
   - first:
-      74: -2231655820661085090
-    second: Melee
-  - first:
-      74: 5064597851218756214
-    second: melee
+      74: 3247431899665770809
+    second: r_run
   externalObjects: {}
   materials:
     materialImportMode: 1
@@ -40,7 +37,7 @@ ModelImporter:
     isReadable: 0
   meshes:
     lODScreenPercentages: []
-    globalScale: 1
+    globalScale: 0.3048
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
@@ -86,17 +83,16 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 0.01
+    globalScale: 0.003048
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0
     skeletonHasParents: 1
-  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: da5036cb924a1e94a92a965f12028cb8,
-    type: 3}
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
   autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 2
   humanoidOversampling: 1
-  avatarSetup: 2
+  avatarSetup: 0
   additionalBone: 0
   userData: 
   assetBundleName: 

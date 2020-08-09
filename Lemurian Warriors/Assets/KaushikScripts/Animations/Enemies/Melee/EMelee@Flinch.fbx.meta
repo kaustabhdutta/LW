@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: 359862cdb4389234f821559d026da734
+guid: a52b39853c0d6b94da69e5ae13484879
 ModelImporter:
   serializedVersion: 19300
   internalIDToNameTable:
   - first:
-      74: 5522812681064789136
-    second: Run
+      74: -3554469013500874231
+    second: Flinch
   externalObjects: {}
   materials:
     materialImportMode: 1
@@ -84,15 +84,16 @@ ModelImporter:
     legStretch: 0.05
     feetSpacing: 0
     globalScale: 1
-    rootMotionBoneName: 
+    rootMotionBoneName: bn_root01
     hasTranslationDoF: 0
     hasExtraRoot: 0
     skeletonHasParents: 1
-  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: da5036cb924a1e94a92a965f12028cb8,
+    type: 3}
   autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 2
   humanoidOversampling: 1
-  avatarSetup: 0
+  avatarSetup: 2
   additionalBone: 0
   userData: 
   assetBundleName: 
