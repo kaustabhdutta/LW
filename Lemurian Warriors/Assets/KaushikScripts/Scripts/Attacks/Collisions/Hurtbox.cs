@@ -5,7 +5,7 @@ using System;
 using System.Linq;
 public class Hurtbox : MonoBehaviour
 {
-    public Collider[] colliders;
+    public Collider[] colliders = new Collider[1];
     public bool isPlayer;
     private List<Hitbox> immune  = new List<Hitbox>();
     public HurtboxManager manager;
