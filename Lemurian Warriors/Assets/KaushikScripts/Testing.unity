@@ -17669,10 +17669,59 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5993687339427255829, guid: 7cba2e343ef51154dabf9cb0342fda82,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5993687339427255829, guid: 7cba2e343ef51154dabf9cb0342fda82,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5993687339427255829, guid: 7cba2e343ef51154dabf9cb0342fda82,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7311175330059232260, guid: 7cba2e343ef51154dabf9cb0342fda82,
+        type: 3}
+      propertyPath: spells.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 8fa185a6eb268c245aaccabccf65c0c0,
+        type: 2}
+    - target: {fileID: 7311175330059232260, guid: 7cba2e343ef51154dabf9cb0342fda82,
+        type: 3}
+      propertyPath: spells.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: c931d88e0d105b64e8c3fddaf05c936d,
+        type: 2}
+    - target: {fileID: 7311175330059232260, guid: 7cba2e343ef51154dabf9cb0342fda82,
+        type: 3}
+      propertyPath: spells.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: 3b438ebef01f0a34198b0a484a347591,
+        type: 2}
+    - target: {fileID: 7311175330059232260, guid: 7cba2e343ef51154dabf9cb0342fda82,
+        type: 3}
+      propertyPath: spells.Array.data[3]
+      value: 
+      objectReference: {fileID: 11400000, guid: f1eb8b1248880e248ad9d7afb3d5984a,
+        type: 2}
     - target: {fileID: 7311175330059232262, guid: 7cba2e343ef51154dabf9cb0342fda82,
         type: 3}
       propertyPath: m_Name
       value: Scorpiana (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7311175330059232263, guid: 7cba2e343ef51154dabf9cb0342fda82,
+        type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7311175330059232263, guid: 7cba2e343ef51154dabf9cb0342fda82,
+        type: 3}
+      propertyPath: m_UseGravity
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7cba2e343ef51154dabf9cb0342fda82, type: 3}

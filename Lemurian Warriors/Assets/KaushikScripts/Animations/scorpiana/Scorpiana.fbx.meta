@@ -85,6 +85,7 @@ ModelImporter:
   - c4dd451f7e765a746a11e8c3415c1898
   - d163596467ba59246961af9e70302da0
   - 1d953538d5bf24640bf0d7b907dd9ae6
+  - 4e011a6ee7b014b4c8348611d16a24ad
   - c6f8e89b439099a4588c4114d8317de4
   - ca0dc62884c3a404aa454af2558ab34a
   - 71545922fcf48b7449efb10aaf679411
@@ -102,7 +103,7 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 0.003048
+    globalScale: 0.3048
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0
