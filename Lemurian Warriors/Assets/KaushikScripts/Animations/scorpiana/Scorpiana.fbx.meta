@@ -37,7 +37,7 @@ ModelImporter:
     isReadable: 0
   meshes:
     lODScreenPercentages: []
-    globalScale: 1
+    globalScale: 0.3048
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
@@ -81,7 +81,13 @@ ModelImporter:
   - eeb064f836ea66040a63688c84f18f79
   - 1e6b2c488b6047b4da932e17e4fef32a
   - 67131c51d5aa2f4479fffe165b9b46c5
+  - 08ec5a3ad3a21764193d34b733e32860
+  - c4dd451f7e765a746a11e8c3415c1898
+  - d163596467ba59246961af9e70302da0
   - 1d953538d5bf24640bf0d7b907dd9ae6
+  - 4e011a6ee7b014b4c8348611d16a24ad
+  - c6f8e89b439099a4588c4114d8317de4
+  - ca0dc62884c3a404aa454af2558ab34a
   - 71545922fcf48b7449efb10aaf679411
   - cd08a8f6ed7ecb446a3a625af204e0bc
   - 652c0464b192c7b4c95c6924567e6ebf
@@ -97,7 +103,7 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 1
+    globalScale: 0.3048
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0
