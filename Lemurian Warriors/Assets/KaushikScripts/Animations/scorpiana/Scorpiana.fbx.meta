@@ -1,7 +1,7 @@
 fileFormatVersion: 2
 guid: 2ff4b11de8604ff4d86dbbbecf26fe04
 ModelImporter:
-  serializedVersion: 19300
+  serializedVersion: 19301
   internalIDToNameTable:
   - first:
       74: -1446463554303443838
@@ -46,6 +46,7 @@ ModelImporter:
     importBlendShapes: 1
     importCameras: 1
     importLights: 1
+    fileIdsGeneration: 1
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
@@ -85,6 +86,7 @@ ModelImporter:
   - c4dd451f7e765a746a11e8c3415c1898
   - d163596467ba59246961af9e70302da0
   - 1d953538d5bf24640bf0d7b907dd9ae6
+  - 9aa7a59e93273064eb84864fbca7bcfa
   - 4e011a6ee7b014b4c8348611d16a24ad
   - c6f8e89b439099a4588c4114d8317de4
   - ca0dc62884c3a404aa454af2558ab34a

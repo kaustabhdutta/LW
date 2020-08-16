@@ -145,11 +145,15 @@ public class NewPlayerController : CharacterBase
                         tempAimPos = hitInfo.point;
                     }
                 }
+                else if (spells[toCast].Type == NewSpell.SpellType.SingleTarget)
+                {
+                    tempAimPos = GetMousePosition();
+                }
                 //determine target position for self cast AOE spells
-                /*if (spells[toCast].Type == NewSpell.SpellType.AOE && spells[toCast].origin == NewSpell.AOESpellOrigin.Self)
+                else if (spells[toCast].Type == NewSpell.SpellType.AOE && spells[toCast].origin == NewSpell.AOESpellOrigin.Self)
                 {
                     tempAimPos = transform.position + VectorMath.LocalToWorld(spells[toCast].VFXSpawnPos, transform);
-                }*/
+                }
                 //move target object to target position
             }
         }
