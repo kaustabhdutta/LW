@@ -9,8 +9,7 @@ using UnityEngine.AI;
 [RequireComponent(typeof(NavMeshAgent))]
 public class NewPlayerController : CharacterBase
 {
-    [System.NonSerialized]
-    new public bool canAct = true;
+    bool canMove;
     bool canGetStunned = true;
     bool canActCache;
     public LayerMask canMoveTo;
@@ -47,7 +46,8 @@ public class NewPlayerController : CharacterBase
         hurtboxManager = GetComponent<HurtboxManager>();
         hurtboxManager.takeDamage += TakeDamage;
         //ignore collisions with player projectiles.
-        Physics.IgnoreLayerCollision(this.gameObject.layer, 11);
+        Physics.IgnoreLayerCollision(gameObject.layer, 11);
+        Physics.IgnoreLayerCollision(gameObject.layer, gameObject.layer);
         if(navAgent == null)
         {
             //requires component so this should always work.
@@ -81,7 +81,7 @@ public class NewPlayerController : CharacterBase
     {
         if(anim.GetInteger("State") == 0)
         {
-            canAct = true;
+            //canAct = true;
             //can act if idle
         }
         //Debug.Log(canAct);
@@ -101,6 +101,11 @@ public class NewPlayerController : CharacterBase
         if (toCast >= 0 && aimObjects[toCast] != null)
         {
             aimObjects[toCast].transform.position = spells[toCast].Type == NewSpell.SpellType.AOE && spells[toCast].origin == NewSpell.AOESpellOrigin.Self ? transform.position + VectorMath.LocalToWorld(spells[toCast].VFXSpawnPos, transform) : GetAimPos();
+        }
+        if (!canMove)
+        {
+            navAgent.speed = 0;
+            navAgent.acceleration = 10000;
         }
         if (canAct)
         {
@@ -261,12 +266,14 @@ public class NewPlayerController : CharacterBase
                     }
                     casting = spellIndex;
                     anim.SetInteger("State", (int)spells[spellIndex].Animation);
+                    canMove = spells[casting].canMoveDuring;
                 }
             }
         }
         else
         {
             transform.rotation = Quaternion.LookRotation(VectorMath.ZeroY(target - transform.position), Vector3.up);
+            canMove = false;
             anim.SetInteger("State", (int)AnimStates.Melee);
             anim.SetInteger("Atk Num", currentMelee);
         }
@@ -307,6 +314,7 @@ public class NewPlayerController : CharacterBase
     {
         anim.SetInteger("State", (int)AnimStates.IdleRunSprint);
         canAct = true;
+        canMove = true;
         CanBufferFalse();
     }
     new void CanActFalse()
@@ -327,6 +335,15 @@ public class NewPlayerController : CharacterBase
         state = AnimStates.IdleRunSprint;
         anim.SetInteger("State", (int)state);
         canStun = true;
+        if (sprinting)
+        {
+            navAgent.speed = sprintSpeed;
+        }
+        else
+        {
+            navAgent.speed = walkSpeed;
+        }
+        navAgent.acceleration = 10;
         CanActTrue();
     }
     void ResetAimObjects()
