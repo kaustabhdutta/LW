@@ -27,7 +27,7 @@ public class SpellBehavior : MonoBehaviour
         transform.position += Vector3.zero;
         cSpellState = SpellState.cast;
         RB = GetComponent<Rigidbody>();
-        Debug.Log(RB);
+        //Debug.Log(RB);
         if (Spell != null)
         {
             if (Spell.straightLine)

@@ -212,7 +212,7 @@ public class NewPlayerController : CharacterBase
             navAgent.acceleration = 100000000;
             navAgent.speed = rollSpeed;
             navAgent.destination = GetAimPos();
-            transform.rotation = Quaternion.LookRotation(GetAimPos());
+            transform.rotation = Quaternion.LookRotation(VectorMath.ZeroY(GetMousePosition() - transform.position), Vector3.up);
             CanActFalse();
             anim.SetInteger("State", (int)AnimStates.Roll);
             Invoke("EndRoll", 0.5f);

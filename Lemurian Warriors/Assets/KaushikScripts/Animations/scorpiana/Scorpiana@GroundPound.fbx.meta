@@ -1,7 +1,7 @@
 fileFormatVersion: 2
 guid: 145ef14bab2199d4d94c3c248c23373a
 ModelImporter:
-  serializedVersion: 19300
+  serializedVersion: 19301
   internalIDToNameTable:
   - first:
       74: -2866607925393382712
@@ -59,7 +59,7 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0
+      - time: 0.020066889
         functionName: CanActFalse
         data: 
         objectReferenceParameter: {fileID: 11500000, guid: 26fbaec7adea1f44b9c6e39fdf1e5be3,
@@ -84,7 +84,7 @@ ModelImporter:
         intParameter: 0
         messageOptions: 0
       - time: 0.92076504
-        functionName: CanActTrue
+        functionName: GoToIdle
         data: 
         objectReferenceParameter: {fileID: 11500000, guid: 26fbaec7adea1f44b9c6e39fdf1e5be3,
           type: 3}
@@ -107,6 +107,7 @@ ModelImporter:
     importBlendShapes: 1
     importCameras: 1
     importLights: 1
+    fileIdsGeneration: 1
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
