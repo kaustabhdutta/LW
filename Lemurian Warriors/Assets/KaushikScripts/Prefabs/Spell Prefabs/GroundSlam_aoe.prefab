@@ -4866,7 +4866,7 @@ MonoBehaviour:
     hitbox: {fileID: 0}
   AOE:
     hitboxes:
-    - damage: 1
+    - damage: 5
       element: 3
       hitbox: {fileID: 7465445568509892708}
     canMultiHit: 0
