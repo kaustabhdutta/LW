@@ -30,6 +30,7 @@ public class NewPlayerController : CharacterBase
     bool bufferedLClick;
     int lClickBuffer;
     Vector3 lClickBufferTarget;
+    bool bufferedRoll;
     Ray cameraRay;
     RaycastHit hitInfo;
     public Vector3 hideStuff;
@@ -39,6 +40,7 @@ public class NewPlayerController : CharacterBase
     bool invincible = false;
     [SerializeField]
     bool canStun = true;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -124,6 +126,17 @@ public class NewPlayerController : CharacterBase
                     bufferedLClick = false;
                     Debug.Log("buffer lclick " + lClickBuffer);
                 }
+                if (bufferedRoll)
+                {
+                    Roll();
+                }
+            }
+        }
+        else
+        {
+            if (rolling)
+            {
+                navAgent.Move(transform.forward * rollSpeed * Time.deltaTime);
             }
         }
     }
@@ -206,16 +219,21 @@ public class NewPlayerController : CharacterBase
     }
     void Roll()
     {
-        if (!rolling)
+        if (canAct)
         {
-            rolling = true;
+            canAct = false;
+            canBuffer = false;
             navAgent.acceleration = 100000000;
             navAgent.speed = rollSpeed;
-            navAgent.destination = GetAimPos();
+            navAgent.isStopped = true;
             transform.rotation = Quaternion.LookRotation(VectorMath.ZeroY(GetMousePosition() - transform.position), Vector3.up);
-            CanActFalse();
+            rolling = true;
             anim.SetInteger("State", (int)AnimStates.Roll);
-            Invoke("EndRoll", 0.5f);
+            //Invoke("EndRoll", 0.5f);
+        }
+        else if (canBuffer)
+        {
+            bufferedRoll = true;
         }
     }
     void EndRoll()
@@ -223,12 +241,16 @@ public class NewPlayerController : CharacterBase
         rolling = false;
         navAgent.speed = sprinting ? sprintSpeed : walkSpeed;
         navAgent.destination = transform.position;
-        CanActTrue();
+        navAgent.isStopped = false;
     }
     protected override void TakeDamage(Hitbox hit)
     {
         if (!invincible)
         {
+            if (rolling)
+            {
+                EndRoll();
+            }
             if (canStun)
             {
                 state = AnimStates.Hurt;
@@ -315,10 +337,18 @@ public class NewPlayerController : CharacterBase
         anim.SetInteger("State", (int)AnimStates.IdleRunSprint);
         canAct = true;
         canMove = true;
+        if (rolling)
+        {
+            EndRoll();
+        }
         CanBufferFalse();
     }
     new void CanActFalse()
     {
+        if (rolling)
+        {
+            rolling = false;
+        }
         canAct = false;
         CanBufferFalse();
     }
