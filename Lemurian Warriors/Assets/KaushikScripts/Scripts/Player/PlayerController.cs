@@ -50,7 +50,7 @@ public class PlayerController : CharacterBase
     public bool bInHitStun;
     // Start is called before the first frame update
 
-    void Start()
+    new void Start()
     {
         if (anim == null) { 
             anim = GetComponent<Animator>();
