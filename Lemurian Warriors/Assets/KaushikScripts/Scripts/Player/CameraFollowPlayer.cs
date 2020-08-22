@@ -27,6 +27,7 @@ public class CameraFollowPlayer : MonoBehaviour
     {
         Vector3 newPos = ToFollow.transform.position - vectorToPlayer.normalized * distanceToPlayer;
         transform.position = Vector3.Slerp(transform.position, newPos, smoothFactor);
+        //transform.rotation = Quaternion.LookRotation(ToFollow.transform.position - transform.position, Vector3.Cross(Vector3.Cross(ToFollow.transform.position - transform.position, Vector3.up), ToFollow.transform.position - transform.position));
     }
 
     // Start is called before the first frame update

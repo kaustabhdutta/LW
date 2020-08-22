@@ -9,8 +9,7 @@ using UnityEngine.AI;
 [RequireComponent(typeof(NavMeshAgent))]
 public class NewPlayerController : CharacterBase
 {
-    [System.NonSerialized]
-    new public bool canAct = true;
+    bool canMove;
     bool canGetStunned = true;
     bool canActCache;
     public LayerMask canMoveTo;
@@ -31,6 +30,7 @@ public class NewPlayerController : CharacterBase
     bool bufferedLClick;
     int lClickBuffer;
     Vector3 lClickBufferTarget;
+    bool bufferedRoll;
     Ray cameraRay;
     RaycastHit hitInfo;
     public Vector3 hideStuff;
@@ -40,6 +40,7 @@ public class NewPlayerController : CharacterBase
     bool invincible = false;
     [SerializeField]
     bool canStun = true;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -47,7 +48,8 @@ public class NewPlayerController : CharacterBase
         hurtboxManager = GetComponent<HurtboxManager>();
         hurtboxManager.takeDamage += TakeDamage;
         //ignore collisions with player projectiles.
-        Physics.IgnoreLayerCollision(this.gameObject.layer, 11);
+        Physics.IgnoreLayerCollision(gameObject.layer, 11);
+        Physics.IgnoreLayerCollision(gameObject.layer, gameObject.layer);
         if(navAgent == null)
         {
             //requires component so this should always work.
@@ -81,7 +83,7 @@ public class NewPlayerController : CharacterBase
     {
         if(anim.GetInteger("State") == 0)
         {
-            canAct = true;
+            //canAct = true;
             //can act if idle
         }
         //Debug.Log(canAct);
@@ -102,6 +104,11 @@ public class NewPlayerController : CharacterBase
         {
             aimObjects[toCast].transform.position = spells[toCast].Type == NewSpell.SpellType.AOE && spells[toCast].origin == NewSpell.AOESpellOrigin.Self ? transform.position + VectorMath.LocalToWorld(spells[toCast].VFXSpawnPos, transform) : GetAimPos();
         }
+        if (!canMove)
+        {
+            navAgent.speed = 0;
+            navAgent.acceleration = 10000;
+        }
         if (canAct)
         {
             navAgent.speed = sprinting ? sprintSpeed : walkSpeed;
@@ -119,6 +126,17 @@ public class NewPlayerController : CharacterBase
                     bufferedLClick = false;
                     Debug.Log("buffer lclick " + lClickBuffer);
                 }
+                if (bufferedRoll)
+                {
+                    Roll();
+                }
+            }
+        }
+        else
+        {
+            if (rolling)
+            {
+                navAgent.Move(transform.forward * rollSpeed * Time.deltaTime);
             }
         }
     }
@@ -145,11 +163,15 @@ public class NewPlayerController : CharacterBase
                         tempAimPos = hitInfo.point;
                     }
                 }
+                else if (spells[toCast].Type == NewSpell.SpellType.SingleTarget)
+                {
+                    tempAimPos = GetMousePosition();
+                }
                 //determine target position for self cast AOE spells
-                /*if (spells[toCast].Type == NewSpell.SpellType.AOE && spells[toCast].origin == NewSpell.AOESpellOrigin.Self)
+                else if (spells[toCast].Type == NewSpell.SpellType.AOE && spells[toCast].origin == NewSpell.AOESpellOrigin.Self)
                 {
                     tempAimPos = transform.position + VectorMath.LocalToWorld(spells[toCast].VFXSpawnPos, transform);
-                }*/
+                }
                 //move target object to target position
             }
         }
@@ -197,16 +219,21 @@ public class NewPlayerController : CharacterBase
     }
     void Roll()
     {
-        if (!rolling)
+        if (canAct)
         {
-            rolling = true;
+            canAct = false;
+            canBuffer = false;
             navAgent.acceleration = 100000000;
             navAgent.speed = rollSpeed;
-            navAgent.destination = GetAimPos();
-            transform.rotation = Quaternion.LookRotation(GetAimPos());
-            CanActFalse();
+            navAgent.isStopped = true;
+            transform.rotation = Quaternion.LookRotation(VectorMath.ZeroY(GetMousePosition() - transform.position), Vector3.up);
+            rolling = true;
             anim.SetInteger("State", (int)AnimStates.Roll);
-            Invoke("EndRoll", 0.5f);
+            //Invoke("EndRoll", 0.5f);
+        }
+        else if (canBuffer)
+        {
+            bufferedRoll = true;
         }
     }
     void EndRoll()
@@ -214,12 +241,16 @@ public class NewPlayerController : CharacterBase
         rolling = false;
         navAgent.speed = sprinting ? sprintSpeed : walkSpeed;
         navAgent.destination = transform.position;
-        CanActTrue();
+        navAgent.isStopped = false;
     }
     protected override void TakeDamage(Hitbox hit)
     {
         if (!invincible)
         {
+            if (rolling)
+            {
+                EndRoll();
+            }
             if (canStun)
             {
                 state = AnimStates.Hurt;
@@ -257,12 +288,14 @@ public class NewPlayerController : CharacterBase
                     }
                     casting = spellIndex;
                     anim.SetInteger("State", (int)spells[spellIndex].Animation);
+                    canMove = spells[casting].canMoveDuring;
                 }
             }
         }
         else
         {
             transform.rotation = Quaternion.LookRotation(VectorMath.ZeroY(target - transform.position), Vector3.up);
+            canMove = false;
             anim.SetInteger("State", (int)AnimStates.Melee);
             anim.SetInteger("Atk Num", currentMelee);
         }
@@ -303,10 +336,19 @@ public class NewPlayerController : CharacterBase
     {
         anim.SetInteger("State", (int)AnimStates.IdleRunSprint);
         canAct = true;
+        canMove = true;
+        if (rolling)
+        {
+            EndRoll();
+        }
         CanBufferFalse();
     }
     new void CanActFalse()
     {
+        if (rolling)
+        {
+            rolling = false;
+        }
         canAct = false;
         CanBufferFalse();
     }
@@ -323,6 +365,15 @@ public class NewPlayerController : CharacterBase
         state = AnimStates.IdleRunSprint;
         anim.SetInteger("State", (int)state);
         canStun = true;
+        if (sprinting)
+        {
+            navAgent.speed = sprintSpeed;
+        }
+        else
+        {
+            navAgent.speed = walkSpeed;
+        }
+        navAgent.acceleration = 10;
         CanActTrue();
     }
     void ResetAimObjects()

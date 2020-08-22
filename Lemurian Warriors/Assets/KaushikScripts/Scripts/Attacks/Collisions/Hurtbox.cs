@@ -62,7 +62,8 @@ public class Hurtbox : MonoBehaviour
         //first check to see if the collision was on a hurtbox is potentially unnecessary but it's here just to be safe.
         if (hurtboxesContains(col.GetContact(0).thisCollider))
         {
-            if(GeneralUtil.Has<Hitbox>(col.gameObject))
+            Debug.Log("Collision With Hitbox");
+            if (GeneralUtil.Has<Hitbox>(col.gameObject))
             {
                 Hitbox hit = null;
                 //it's possible for there to be multiple hitboxes on the same object
@@ -85,7 +86,8 @@ public class Hurtbox : MonoBehaviour
     //for this reason, please make sure that the hurtbox colliders are the only ones on any given gameobject. 
     //You can make children of bones to put hurtboxes on them without changing animations.
     private void OnTriggerEnter(Collider other)
-    { 
+    {
+        Debug.Log("Trigger with Hurtbox");
         Hitbox hit = null;
         foreach (Hitbox h in other.GetComponents<Hitbox>())
         {

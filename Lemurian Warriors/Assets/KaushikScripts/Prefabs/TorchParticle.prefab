@@ -1312,16 +1312,27 @@ ParticleSystem:
         key6: {r: 0, g: 0, b: 0, a: 0}
         key7: {r: 0, g: 0, b: 0, a: 0}
         ctime0: 0
+<<<<<<< HEAD
         ctime1: 12143
         ctime2: 26985
         ctime3: 47995
         ctime4: 0
+=======
+        ctime1: 8288
+        ctime2: 38357
+        ctime3: 47995
+        ctime4: 47995
+>>>>>>> master
         ctime5: 0
         ctime6: 0
         ctime7: 0
         atime0: 0
         atime1: 12529
+<<<<<<< HEAD
         atime2: 26214
+=======
+        atime2: 30647
+>>>>>>> master
         atime3: 65342
         atime4: 65342
         atime5: 0

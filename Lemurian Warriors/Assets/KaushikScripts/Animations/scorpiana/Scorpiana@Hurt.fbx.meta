@@ -1,7 +1,7 @@
 fileFormatVersion: 2
 guid: a69f452052de3664ba04a26da4c621de
 ModelImporter:
-  serializedVersion: 19300
+  serializedVersion: 19301
   internalIDToNameTable:
   - first:
       74: 6784842761064322311
@@ -46,7 +46,7 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -59,15 +59,7 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.7717391
-        functionName: GoToIdle
-        data: 
-        objectReferenceParameter: {fileID: 11500000, guid: 26fbaec7adea1f44b9c6e39fdf1e5be3,
-          type: 3}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
-      - time: 0
+      - time: 0.0100334445
         functionName: CanActFalse
         data: 
         objectReferenceParameter: {fileID: 11500000, guid: 26fbaec7adea1f44b9c6e39fdf1e5be3,
@@ -77,6 +69,14 @@ ModelImporter:
         messageOptions: 0
       - time: 0.5869565
         functionName: CanBufferTrue
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 26fbaec7adea1f44b9c6e39fdf1e5be3,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.7717391
+        functionName: GoToIdle
         data: 
         objectReferenceParameter: {fileID: 11500000, guid: 26fbaec7adea1f44b9c6e39fdf1e5be3,
           type: 3}
@@ -99,6 +99,7 @@ ModelImporter:
     importBlendShapes: 1
     importCameras: 1
     importLights: 1
+    fileIdsGeneration: 1
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1

@@ -1,11 +1,19 @@
 fileFormatVersion: 2
 guid: 4e011a6ee7b014b4c8348611d16a24ad
 ModelImporter:
+<<<<<<< HEAD
   serializedVersion: 19300
   internalIDToNameTable:
   - first:
       74: 1660244169855081645
     second: sting
+=======
+  serializedVersion: 19301
+  internalIDToNameTable:
+  - first:
+      74: 1660244169855081645
+    second: Sting
+>>>>>>> master
   externalObjects: {}
   materials:
     materialImportMode: 1
@@ -33,7 +41,80 @@ ModelImporter:
     animationWrapMode: 0
     extraExposedTransformPaths: []
     extraUserProperties: []
+<<<<<<< HEAD
     clipAnimations: []
+=======
+    clipAnimations:
+    - serializedVersion: 16
+      name: Sting
+      takeName: sting
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 32
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events:
+      - time: 0.02322013
+        functionName: CanActFalse
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 26fbaec7adea1f44b9c6e39fdf1e5be3,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.3831832
+        functionName: ActivateAttack
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 26fbaec7adea1f44b9c6e39fdf1e5be3,
+          type: 3}
+        floatParameter: 0
+        intParameter: 1
+        messageOptions: 0
+      - time: 0.6736396
+        functionName: DeactivateAttack
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 26fbaec7adea1f44b9c6e39fdf1e5be3,
+          type: 3}
+        floatParameter: 0
+        intParameter: 1
+        messageOptions: 0
+      - time: 0.58341867
+        functionName: CanBufferTrue
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 26fbaec7adea1f44b9c6e39fdf1e5be3,
+          type: 3}
+        floatParameter: 0
+        intParameter: 1
+        messageOptions: 0
+      - time: 0.85582066
+        functionName: GoToIdle
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 26fbaec7adea1f44b9c6e39fdf1e5be3,
+          type: 3}
+        floatParameter: 0
+        intParameter: 1
+        messageOptions: 0
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+>>>>>>> master
     isReadable: 0
   meshes:
     lODScreenPercentages: []
@@ -46,6 +127,10 @@ ModelImporter:
     importBlendShapes: 1
     importCameras: 1
     importLights: 1
+<<<<<<< HEAD
+=======
+    fileIdsGeneration: 1
+>>>>>>> master
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
@@ -83,7 +168,11 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
+<<<<<<< HEAD
     globalScale: 0.003048
+=======
+    globalScale: 0.3048
+>>>>>>> master
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0
