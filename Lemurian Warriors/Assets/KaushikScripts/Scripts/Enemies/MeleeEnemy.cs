@@ -23,7 +23,7 @@ public class MeleeEnemy : EnemyBase
     Vector3 lastPlayerPos;
     //public DamageController damCon;
     // Start is called before the first frame update
-    void Start()
+    new void Start()
     {
         navAgent = GetComponent<NavMeshAgent>();
         navAgent.stoppingDistance = attackRange * 0.8f;
@@ -99,7 +99,7 @@ public class MeleeEnemy : EnemyBase
         foreach(System.Reflection.FieldInfo field in fields)
         {
             if (field.FieldType != player.GetType() && 
-                field.GetValue(this) != Head)
+                (Object) field.GetValue(this) != Head)
             {
                 field.SetValue(this, field.GetValue(DefaultValues));
             }

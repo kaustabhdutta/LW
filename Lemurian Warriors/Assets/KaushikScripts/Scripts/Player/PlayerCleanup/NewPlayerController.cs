@@ -1,9 +1,9 @@
-﻿using BehaviorDesigner.Runtime.Tasks;
-using BehaviorDesigner.Runtime.Tasks.Unity.UnityQuaternion;
-using System.Collections;
-using System.Collections.Generic;
-using TMPro;
-using TreeEditor;
+﻿//using BehaviorDesigner.Runtime.Tasks;
+//using BehaviorDesigner.Runtime.Tasks.Unity.UnityQuaternion;
+//using System.Collections;
+//using System.Collections.Generic;
+//using TMPro;
+//using TreeEditor;
 using UnityEngine;
 using UnityEngine.AI;
 [RequireComponent(typeof(NavMeshAgent))]
@@ -42,7 +42,7 @@ public class NewPlayerController : CharacterBase
     bool canStun = true;
     
     // Start is called before the first frame update
-    void Start()
+    new void Start()
     {
         damCon = GetComponent<DamageController>();
         hurtboxManager = GetComponent<HurtboxManager>();
@@ -131,6 +131,7 @@ public class NewPlayerController : CharacterBase
                     Roll();
                 }
             }
+            canActCache = canAct;
         }
         else
         {

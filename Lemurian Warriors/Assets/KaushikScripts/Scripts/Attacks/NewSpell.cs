@@ -166,6 +166,7 @@ public class NewSpell : ScriptableObject
         }
     }
 }
+/*
 [CustomEditor(typeof(NewSpell))]
 public class NewSpellEditor : Editor
 {
@@ -245,4 +246,4 @@ public class NewSpellEditor : Editor
         newSpell.canMoveDuring = GUILayout.Toggle(newSpell.canMoveDuring, "Can move during");
     }
     
-}
+}*/
