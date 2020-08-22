@@ -1,11 +1,11 @@
 fileFormatVersion: 2
 guid: eeb064f836ea66040a63688c84f18f79
 ModelImporter:
-  serializedVersion: 19300
+  serializedVersion: 19301
   internalIDToNameTable:
   - first:
       74: -7254038708117199699
-    second: roll
+    second: Roll
   externalObjects: {}
   materials:
     materialImportMode: 1
@@ -33,11 +33,80 @@ ModelImporter:
     animationWrapMode: 0
     extraExposedTransformPaths: []
     extraUserProperties: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Roll
+      takeName: roll
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 32
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events:
+      - time: 0.5632163
+        functionName: CanBufferTrue
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 26fbaec7adea1f44b9c6e39fdf1e5be3,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.7008004
+        functionName: EndRoll
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 26fbaec7adea1f44b9c6e39fdf1e5be3,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.8860477
+        functionName: GoToIdle
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 26fbaec7adea1f44b9c6e39fdf1e5be3,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.13451307
+        functionName: HurtboxToggle
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 26fbaec7adea1f44b9c6e39fdf1e5be3,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.65957445
+        functionName: HurtboxToggle
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 26fbaec7adea1f44b9c6e39fdf1e5be3,
+          type: 3}
+        floatParameter: 0
+        intParameter: 1
+        messageOptions: 0
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     isReadable: 0
   meshes:
     lODScreenPercentages: []
-    globalScale: 1
+    globalScale: 0.3048
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
@@ -46,6 +115,7 @@ ModelImporter:
     importBlendShapes: 1
     importCameras: 1
     importLights: 1
+    fileIdsGeneration: 1
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
@@ -83,7 +153,7 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 1
+    globalScale: 0.3048
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0

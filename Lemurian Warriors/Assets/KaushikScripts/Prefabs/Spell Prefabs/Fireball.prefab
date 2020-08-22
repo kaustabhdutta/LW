@@ -75,12 +75,18 @@ MonoBehaviour:
     hitbox: {fileID: 855785352361297902}
   AOE:
     hitboxes:
-    - damage: 0.5
+    - damage: 3
+      element: 1
+      hitbox: {fileID: 5231394942094298548}
+    - damage: 3
+      element: 1
+      hitbox: {fileID: 5231394942094298548}
+    - damage: 3
       element: 1
       hitbox: {fileID: 5231394942094298548}
     canMultiHit: 0
+    bPlayer: 1
   AOERadius: 1
-  isEnemy: 0
 --- !u!135 &2335959195155309616
 SphereCollider:
   m_ObjectHideFlags: 0

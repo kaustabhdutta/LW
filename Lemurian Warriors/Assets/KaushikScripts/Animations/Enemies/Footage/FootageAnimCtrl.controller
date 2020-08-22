@@ -38,7 +38,7 @@ BlendTree:
   m_Name: IdleMove
   m_Childs:
   - serializedVersion: 2
-    m_Motion: {fileID: -3419257869308726280, guid: edf77e16606e87947a6c5fad5e2b2bcd,
+    m_Motion: {fileID: -3419257869308726280, guid: ec9bc2b3627b68744b310607d7540070,
       type: 3}
     m_Threshold: 0.5
     m_Position: {x: 0, y: -0.5}
@@ -47,7 +47,7 @@ BlendTree:
     m_DirectBlendParameter: Blend
     m_Mirror: 0
   - serializedVersion: 2
-    m_Motion: {fileID: -3419257869308726280, guid: edf77e16606e87947a6c5fad5e2b2bcd,
+    m_Motion: {fileID: -3419257869308726280, guid: ec9bc2b3627b68744b310607d7540070,
       type: 3}
     m_Threshold: 0.625
     m_Position: {x: 0, y: 0.5}
@@ -56,7 +56,7 @@ BlendTree:
     m_DirectBlendParameter: Blend
     m_Mirror: 0
   - serializedVersion: 2
-    m_Motion: {fileID: 4521653448960639257, guid: dff670e11e8efe3459f43de9cd5b9c19,
+    m_Motion: {fileID: 4521653448960639257, guid: 73996ab4d8c32a84cb3b923c765db40e,
       type: 3}
     m_Threshold: 0.75
     m_Position: {x: -0.5, y: 0}
@@ -65,7 +65,7 @@ BlendTree:
     m_DirectBlendParameter: MovementCos
     m_Mirror: 0
   - serializedVersion: 2
-    m_Motion: {fileID: -6016991639299765170, guid: 95d8c1290fa50e94991ff9d72f0a3b08,
+    m_Motion: {fileID: -6016991639299765170, guid: 01503191f8a4a9c4f95f182ec36a2a20,
       type: 3}
     m_Threshold: 0.875
     m_Position: {x: 0.5, y: 0}
@@ -74,7 +74,7 @@ BlendTree:
     m_DirectBlendParameter: MovementCos
     m_Mirror: 0
   - serializedVersion: 2
-    m_Motion: {fileID: -3100369314251171874, guid: de2b5ef05756cfc42b7ef97796d2dcf4,
+    m_Motion: {fileID: -3100369314251171874, guid: 854319a73d48ab442bb2b38283c387d0,
       type: 3}
     m_Threshold: 1
     m_Position: {x: 0, y: 0}
@@ -215,7 +215,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 4348485665485846014, guid: 668426c454376e54eb84d0e2e2eca4e6,
+  m_Motion: {fileID: -6758483313513240000, guid: 668426c454376e54eb84d0e2e2eca4e6,
     type: 3}
   m_Tag: 
   m_SpeedParameter: 
