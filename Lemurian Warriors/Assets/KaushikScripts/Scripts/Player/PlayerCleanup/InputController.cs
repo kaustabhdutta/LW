@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using System.Security.Policy;
 
 public class InputController : MonoBehaviour
 {
@@ -60,28 +61,34 @@ public class InputController : MonoBehaviour
             SelectSpell(-1);
         }
     }
-    public event Action onRightClick;
+    public delegate void DelNoParams();
+    public DelNoParams onRightClick;
+    public DelNoParams onLeftClick;
+    public DelNoParams onSpace;
+
+    public delegate void DelInt(int val);
+    public DelInt onSelectSpell;
+
+    public delegate void DelBool(bool val);
+    public DelBool onSprint;
+
     public void RightClick()
     {
         onRightClick?.Invoke();
     }
-    public event Action onSpace;
     public void Space()
     {
         onSpace?.Invoke();
     }
-    public event Action onLeftClick;
     public void LeftClick()
     {
         onLeftClick?.Invoke();
     }
-    public event Action<int> onSelectSpell;
     public void SelectSpell(int spell)
     {
         onSelectSpell?.Invoke(spell);
         currentSpell = spell;
     }
-    public event Action<bool> onSprint;
     public void Sprint(bool sprint)
     {
         onSprint?.Invoke(sprint);

@@ -59,11 +59,11 @@ public class NewPlayerController : CharacterBase
         if (InputController.current != null)
         {
             //hopefully the player will never be destroyed at runtime, but if it is, you're going to need to unsubscribe everything in OnDestroy. Can't be that hard.
-            InputController.current.onRightClick += RightClick;
-            InputController.current.onLeftClick += LeftClick;
-            InputController.current.onSelectSpell += SelectSpell;
-            InputController.current.onSprint += Sprint;
-            InputController.current.onSpace += Roll;
+            InputController.current.onRightClick = RightClick;
+            InputController.current.onLeftClick = LeftClick;
+            InputController.current.onSelectSpell = SelectSpell;
+            InputController.current.onSprint = Sprint;
+            InputController.current.onSpace = Roll;
         }
         if(hurtboxManager == null)
         {
