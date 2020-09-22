@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CameraFollowPlayer : MonoBehaviour
 {
-    public NewPlayerController ToFollow;
+    public NewPlayerController toFollow;
     public Vector3 vectorToPlayer = new Vector3(1, -1, 0);
     [Range(0, 1)]
     public float FollowMovementScale;
@@ -15,49 +15,46 @@ public class CameraFollowPlayer : MonoBehaviour
     [Range(0.1f, 1)]
     public float smoothFactor;
 
+    private float currentX;
+    private float currentY;
+    [SerializeField]
+    private float camRateX;
+    [SerializeField]
+    private float camRateY;
+    [SerializeField]
+    private float yAngleMin;
+    [SerializeField]
+    private float yAngleMax;
+
     private void Start()
     {
         Physics.IgnoreLayerCollision(12, 13);
         Physics.IgnoreLayerCollision(9, 11);
         distanceToPlayer = maxDistanceToPlayer;
         transform.rotation = Quaternion.LookRotation(vectorToPlayer);
-        transform.position = ToFollow.transform.position - vectorToPlayer / vectorToPlayer.magnitude * distanceToPlayer;
+        transform.position = toFollow.transform.position - vectorToPlayer / vectorToPlayer.magnitude * distanceToPlayer;
+        InputController3rdP.current.mouseMovement = UpdateCam;
+
     }
     private void LateUpdate()
     {
-        Vector3 newPos = ToFollow.transform.position - vectorToPlayer.normalized * distanceToPlayer;
-        transform.position = Vector3.Slerp(transform.position, newPos, smoothFactor);
+        if (InputController.current.enabled)
+        {
+            Vector3 newPos = toFollow.transform.position - vectorToPlayer.normalized * distanceToPlayer;
+            transform.position = Vector3.Slerp(transform.position, newPos, smoothFactor);
+        }
         //transform.rotation = Quaternion.LookRotation(ToFollow.transform.position - transform.position, Vector3.Cross(Vector3.Cross(ToFollow.transform.position - transform.position, Vector3.up), ToFollow.transform.position - transform.position));
     }
+    private void UpdateCam(float inX, float inY)
+    {
+        currentX += inX;
+        currentY -= inY;
 
-    // Start is called before the first frame update
-    /*
-    void Start()
-    {
-        distanceToPlayer = maxDistanceToPlayer;
-        transform.rotation = Quaternion.LookRotation(vectorToPlayer);
-        transform.position = ToFollow.transform.position - vectorToPlayer / vectorToPlayer.magnitude * distanceToPlayer;
-    }
+        currentY = Mathf.Clamp(currentY, yAngleMin, yAngleMax);
+        Vector3 dir = new Vector3(0, 0, -distanceToPlayer);
+        Quaternion rotation = Quaternion.Euler(currentY, currentX, 0);
+        transform.position = toFollow.transform.position + rotation * dir;
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (ToFollow.canAct)
-        {
-            if (ToFollow.NavAgent.velocity != null)
-            {
-                Displacement = ToFollow.NavAgent.velocity * FollowMovementScale - VDistanceInDirection((ToFollow.NavAgent.velocity * FollowMovementScale), Vector3.up) * Vector3.up;
-                transform.position = ToFollow.transform.position + Displacement - vectorToPlayer / vectorToPlayer.magnitude * distanceToPlayer;
-            }
-            //Debug.Log((ToFollow.NavAgent.velocity).magnitude);
-        }
-        else
-        {
-            transform.position = ToFollow.transform.position - vectorToPlayer.normalized * distanceToPlayer;
-        }
+        transform.LookAt(toFollow.transform.position);
     }
-    public float VDistanceInDirection(Vector3 vector, Vector3 direction)
-    {
-        return (Vector3.Dot(vector, direction) / direction.magnitude);
-    }*/
 }

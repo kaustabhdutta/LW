@@ -1,5 +1,7 @@
-﻿using System.Collections;
+﻿using BehaviorDesigner.Runtime.Tasks.Unity.UnityVector2;
+using System.Collections;
 using System.Collections.Generic;
+using System.Security.Policy;
 using UnityEngine;
 
 public class VectorMath : MonoBehaviour
@@ -33,5 +35,17 @@ public class VectorMath : MonoBehaviour
     public static Vector3 ZeroY(Vector3 input)
     {
         return new Vector3(input.x, 0, input.z);
+    }
+    public static Vector2 ClampMax(Vector2 v, float size)
+    {
+        if(v.magnitude > size)
+        {
+            v = v / v.magnitude * size;
+        }
+        return v;
+    }
+    public static Vector2 ClampMin(Vector2 v, float size)
+    {
+        return v.magnitude < size ? v.normalized * size : v;
     }
 }

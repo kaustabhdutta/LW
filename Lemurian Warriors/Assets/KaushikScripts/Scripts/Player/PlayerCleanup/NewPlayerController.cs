@@ -7,6 +7,8 @@
 using UnityEngine;
 using UnityEngine.AI;
 [RequireComponent(typeof(NavMeshAgent))]
+[RequireComponent(typeof(InputController))]
+[RequireComponent(typeof(InputController3rdP))]
 public class NewPlayerController : CharacterBase
 {
     bool canMove;
@@ -19,6 +21,7 @@ public class NewPlayerController : CharacterBase
     bool rolling;
     public NewSpell[] spells = new NewSpell[4];
     int toCast = -1;
+    int toCast3rd = 0;
     int casting;
     public AnimationClip[] meleeAttacks = new AnimationClip[2];
     int currentMelee;
@@ -40,16 +43,24 @@ public class NewPlayerController : CharacterBase
     bool invincible = false;
     [SerializeField]
     bool canStun = true;
+    public bool topDown = true;
+    private Vector3 controlledMovement;
+    [SerializeField]
+    float acceleration;
     
     // Start is called before the first frame update
     new void Start()
     {
+        controlledMovement = Vector3.zero;
+        InputController.current.enabled = !topDown;
+        InputController3rdP.current.enabled = topDown;
         damCon = GetComponent<DamageController>();
         hurtboxManager = GetComponent<HurtboxManager>();
         hurtboxManager.takeDamage += TakeDamage;
         //ignore collisions with player projectiles.
         Physics.IgnoreLayerCollision(gameObject.layer, 11);
         Physics.IgnoreLayerCollision(gameObject.layer, gameObject.layer);
+        toCast = -1;
         if(navAgent == null)
         {
             //requires component so this should always work.
@@ -64,8 +75,18 @@ public class NewPlayerController : CharacterBase
             InputController.current.onSelectSpell = SelectSpell;
             InputController.current.onSprint = Sprint;
             InputController.current.onSpace = Roll;
+
         }
-        if(hurtboxManager == null)
+        if(InputController3rdP.current != null)
+        {
+            InputController3rdP.current.NextSpell = NextSpell;
+            InputController3rdP.current.PrevSpell = PrevSpell;
+            InputController3rdP.current.LeftClick = LeftClick;
+            InputController3rdP.current.RightClick = RClick3rd;
+            InputController3rdP.current.RightClickUp = RClickUp3rd;
+            InputController3rdP.current.Movement = Move3rd;
+        }
+        if (hurtboxManager == null)
         {
             hurtboxManager = GetComponent<HurtboxManager>();
         }
@@ -408,6 +429,64 @@ public class NewPlayerController : CharacterBase
         foreach (GameObject obj in aimObjects)
         {
             obj.transform.position = hideStuff;
+        }
+    }
+    void CameraModeToggle()
+    {
+        topDown = !topDown;
+        if (topDown)
+        {
+
+        }
+        else
+        {
+            navAgent.Stop();
+        }
+    }
+    void NextSpell()
+    {
+        toCast3rd++;
+        if (toCast3rd > 3) toCast3rd = 0;
+    }
+    void PrevSpell()
+    {
+        toCast3rd--;
+        if (toCast3rd < 0) toCast3rd = 3;
+    }
+    void LClick3rd()
+    {
+        if (canAct)
+        {
+            StartCast(toCast, GetAimPos());
+        }
+        else if (canBuffer)
+        {
+            bufferedLClick = true;
+            lClickBuffer = toCast;
+            lClickBufferTarget = GetAimPos();
+
+        }
+    }
+    void RClick3rd()
+    {
+        toCast = toCast3rd;
+    }
+    void RClickUp3rd()
+    {
+        toCast = -1;
+    }
+    void Move3rd(Vector3 movement, float time)
+    {
+        if (canAct)
+        {
+            movement *= (sprinting ? sprintSpeed : walkSpeed);
+
+            controlledMovement += Vector3.ClampMagnitude((movement - controlledMovement).normalized * acceleration * time, (movement - controlledMovement).magnitude);
+            controlledMovement = Vector3.ClampMagnitude(controlledMovement, (sprinting ? sprintSpeed : walkSpeed));
+            navAgent.isStopped = false;
+            //Debug.Log(movement.z);
+            navAgent.Move(controlledMovement * time);
+            transform.rotation = Quaternion.LookRotation(controlledMovement);
         }
     }
 }
