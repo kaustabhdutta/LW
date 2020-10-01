@@ -4,6 +4,8 @@
 //using System.Collections.Generic;
 //using TMPro;
 //using TreeEditor;
+using TMPro;
+using UnityEditor.UI;
 using UnityEngine;
 using UnityEngine.AI;
 [RequireComponent(typeof(NavMeshAgent))]
@@ -12,48 +14,54 @@ using UnityEngine.AI;
 public class NewPlayerController : CharacterBase
 {
     bool canMove;
-    bool canGetStunned = true;
+    bool canStun = true;
+    bool invincible = false;
     bool canActCache;
     public LayerMask canMoveTo;
+    [SerializeField]
+    float acceleration;
     public float walkSpeed;
     public float sprintSpeed;
     public float rollSpeed;
     bool rolling;
-    public NewSpell[] spells = new NewSpell[4];
-    int toCast = -1;
-    int toCast3rd = 0;
-    int casting;
-    public AnimationClip[] meleeAttacks = new AnimationClip[2];
-    int currentMelee;
-    Vector3 movementBuffer;
-    Vector3 castTarget;
-    public enum AnimStates { IdleRunSprint, Roll, Hurt, Melee, GroundPound, WaterWhip, StraightLine, Throw, SelfCast, Death }
-    AnimStates state = AnimStates.IdleRunSprint;
-    public Animator anim;
+    bool bufferedRoll;
+    bool sprinting;
     bool bufferedLClick;
     int lClickBuffer;
     Vector3 lClickBufferTarget;
-    bool bufferedRoll;
+    Vector3 movementBuffer;
+    int toCast = -1;
+    int toCast3rd = 0;
+    int casting;
+    Vector3 castTarget;
+    private Vector3 controlledMovement;
+    public NewSpell[] spells = new NewSpell[4];
+    int currentMelee;
+    //public AnimationClip[] meleeAttacks = new AnimationClip[2];
+    [SerializeField]
+    private Animator anim;
+    public enum AnimStates { IdleRunSprint, Roll, Hurt, Melee, GroundPound, WaterWhip, StraightLine, Throw, SelfCast, Death }
+    AnimStates state = AnimStates.IdleRunSprint;
     Ray cameraRay;
     RaycastHit hitInfo;
-    public Vector3 hideStuff;
-    private GameObject[] aimObjects = new GameObject[4];
-    bool sprinting;
-    [SerializeField]
-    bool invincible = false;
-    [SerializeField]
-    bool canStun = true;
+    public CameraFollowPlayer cam;
+    public Transform camLookAt;
+    public Vector3 defaultCamLookAt;
+    public Transform aimingCamLookAt;
+    [System.NonSerialized]
+    public bool aiming;
     public bool topDown = true;
-    private Vector3 controlledMovement;
-    [SerializeField]
-    float acceleration;
-    
+    private GameObject[] aimObjects = new GameObject[4];
+    public Vector3 hideStuff;
+
     // Start is called before the first frame update
     new void Start()
     {
+        cam = Camera.main.GetComponent<CameraFollowPlayer>();
+        defaultCamLookAt = camLookAt.transform.localPosition;
         controlledMovement = Vector3.zero;
-        InputController.current.enabled = !topDown;
-        InputController3rdP.current.enabled = topDown;
+        InputController.current.enabled = topDown;
+        InputController3rdP.current.enabled = !topDown;
         damCon = GetComponent<DamageController>();
         hurtboxManager = GetComponent<HurtboxManager>();
         hurtboxManager.takeDamage += TakeDamage;
@@ -85,6 +93,7 @@ public class NewPlayerController : CharacterBase
             InputController3rdP.current.RightClick = RClick3rd;
             InputController3rdP.current.RightClickUp = RClickUp3rd;
             InputController3rdP.current.Movement = Move3rd;
+            InputController3rdP.current.Sprint = Sprint;
         }
         if (hurtboxManager == null)
         {
@@ -104,14 +113,28 @@ public class NewPlayerController : CharacterBase
     {
         if(anim.GetInteger("State") == 0)
         {
-            //canAct = true;
+            canAct = true;
+            canMove = true;
             //can act if idle
         }
+        if (Input.GetKeyDown(KeyCode.J))
+        {
+            CameraModeToggle();
+        }
         //Debug.Log(canAct);
-        anim.SetFloat("MovementCos", VectorMath.DistanceInDirection(navAgent.velocity, transform.right));
-        anim.SetFloat("MovementSin", VectorMath.DistanceInDirection(navAgent.velocity, transform.forward));
+        if (topDown)
+        {
+            anim.SetFloat("MovementCos", VectorMath.DistanceInDirection(navAgent.velocity, transform.right));
+            anim.SetFloat("MovementSin", VectorMath.DistanceInDirection(navAgent.velocity, transform.forward));
+            cameraRay = Camera.main.ScreenPointToRay(Input.mousePosition);
+        }
+        else
+        {
+            anim.SetFloat("MovementCos", VectorMath.DistanceInDirection(controlledMovement, transform.right));
+            anim.SetFloat("MovementSin", VectorMath.DistanceInDirection(controlledMovement, transform.forward));
+        }
         HideAimObjects();
-        cameraRay = Camera.main.ScreenPointToRay(Input.mousePosition);
+        
         Vector3 tempAimPos = transform.position;
         //default target is self
         float rayLength;
@@ -173,28 +196,66 @@ public class NewPlayerController : CharacterBase
         float rayLength;
         Ground.Raycast(cameraRay, out rayLength);
         tempAimPos = cameraRay.GetPoint(rayLength);
-        if (toCast >= 0 && aimObjects[toCast] != null)
+        if (topDown)
         {
-            if (spells[toCast].clickToCast)
+            
+            if (toCast >= 0 && aimObjects[toCast] != null)
             {
-                //determine target for straight line projectiles
-                if (!spells[toCast].straightLine)
+                if (spells[toCast].clickToCast)
                 {
-                    if (Physics.Raycast(cameraRay, out hitInfo, 100, canMoveTo))
+                    //determine target for straight line projectiles
+                    if (!spells[toCast].straightLine)
                     {
-                        tempAimPos = hitInfo.point;
+                        if (Physics.Raycast(cameraRay, out hitInfo, 100, canMoveTo))
+                        {
+                            tempAimPos = hitInfo.point;
+                        }
                     }
+                    else if (spells[toCast].Type == NewSpell.SpellType.SingleTarget)
+                    {
+                        tempAimPos = GetMousePosition();
+                    }
+                    //determine target position for self cast AOE spells
+                    else if (spells[toCast].Type == NewSpell.SpellType.AOE && spells[toCast].origin == NewSpell.AOESpellOrigin.Self)
+                    {
+                        tempAimPos = transform.position + VectorMath.LocalToWorld(spells[toCast].VFXSpawnPos, transform);
+                    }
+                    //move target object to target position
                 }
-                else if (spells[toCast].Type == NewSpell.SpellType.SingleTarget)
+            }
+        }
+        else
+        {
+            if (toCast >= 0 && aimObjects[toCast] != null)
+            {
+                if (spells[toCast].clickToCast)
                 {
-                    tempAimPos = GetMousePosition();
+                    //determine target for straight line projectiles
+                    if (!spells[toCast].straightLine)
+                    {
+                        if (Physics.Raycast(new Ray(cam.transform.position, cam.transform.forward), out hitInfo, 100, cam.blocksProjectiles))
+                        {
+                            tempAimPos = hitInfo.point;
+                        }
+                        else
+                        {
+                            tempAimPos = cam.transform.position + 100 * cam.transform.forward;
+                        }
+                    }
+                    else if (spells[toCast].Type == NewSpell.SpellType.SingleTarget)
+                    {
+                        if (Physics.Raycast(new Ray(cam.transform.position, cam.transform.forward), out hitInfo, 100, cam.blocksProjectiles))
+                        {
+                            tempAimPos = hitInfo.point;
+                        }
+                    }
+                    //determine target position for self cast AOE spells
+                    else if (spells[toCast].Type == NewSpell.SpellType.AOE && spells[toCast].origin == NewSpell.AOESpellOrigin.Self)
+                    {
+                        tempAimPos = transform.position + VectorMath.LocalToWorld(spells[toCast].VFXSpawnPos, transform);
+                    }
+                    //move target object to target position
                 }
-                //determine target position for self cast AOE spells
-                else if (spells[toCast].Type == NewSpell.SpellType.AOE && spells[toCast].origin == NewSpell.AOESpellOrigin.Self)
-                {
-                    tempAimPos = transform.position + VectorMath.LocalToWorld(spells[toCast].VFXSpawnPos, transform);
-                }
-                //move target object to target position
             }
         }
         return tempAimPos;
@@ -312,6 +373,7 @@ public class NewPlayerController : CharacterBase
                     anim.SetInteger("State", (int)spells[spellIndex].Animation);
                     canMove = spells[casting].canMoveDuring;
                 }
+                if (!spells[casting].canMoveDuring) controlledMovement = Vector3.zero;
             }
         }
         else
@@ -320,6 +382,7 @@ public class NewPlayerController : CharacterBase
             canMove = false;
             anim.SetInteger("State", (int)AnimStates.Melee);
             anim.SetInteger("Atk Num", currentMelee);
+            controlledMovement = Vector3.zero;
         }
     }
     //animation event, apparently there's no bool field for anim events.
@@ -339,7 +402,7 @@ public class NewPlayerController : CharacterBase
     void Hurt()
     {
         //play the hurt animation no matter where you were.
-        if (canGetStunned)
+        if (canStun)
         {
             anim.Play("Hurt", -1, 0);
         }
@@ -436,12 +499,14 @@ public class NewPlayerController : CharacterBase
         topDown = !topDown;
         if (topDown)
         {
-
+            Camera.main.transform.LookAt(transform);
         }
         else
         {
-            navAgent.Stop();
         }
+        navAgent.isStopped = !topDown;
+        InputController.current.enabled = topDown;
+        InputController3rdP.current.enabled = !topDown;
     }
     void NextSpell()
     {
@@ -470,23 +535,50 @@ public class NewPlayerController : CharacterBase
     void RClick3rd()
     {
         toCast = toCast3rd;
+        aiming = !(spells[toCast].Type == NewSpell.SpellType.SelfCast || (spells[toCast].Type == NewSpell.SpellType.AOE && spells[toCast].origin == NewSpell.AOESpellOrigin.Self));
     }
     void RClickUp3rd()
     {
         toCast = -1;
+        aiming = false;
+        if(anim.GetInteger("State") == 0)
+        {
+            GoToIdle();
+        }
     }
     void Move3rd(Vector3 movement, float time)
     {
         if (canAct)
         {
             movement *= (sprinting ? sprintSpeed : walkSpeed);
-
+            if (VectorMath.DistanceInDirection(movement, controlledMovement) == -movement.magnitude && movement.magnitude != 0)
+            {
+                controlledMovement += Vector3.Cross(controlledMovement, Vector3.up)/5;
+            }
+            else if(controlledMovement.magnitude <= .01 && movement.magnitude > 0)
+            {
+                controlledMovement += transform.forward;
+            }
             controlledMovement += Vector3.ClampMagnitude((movement - controlledMovement).normalized * acceleration * time, (movement - controlledMovement).magnitude);
             controlledMovement = Vector3.ClampMagnitude(controlledMovement, (sprinting ? sprintSpeed : walkSpeed));
-            navAgent.isStopped = false;
             //Debug.Log(movement.z);
             navAgent.Move(controlledMovement * time);
-            transform.rotation = Quaternion.LookRotation(controlledMovement);
+            if (!aiming)
+            {
+                if (controlledMovement.magnitude > 0.01) transform.rotation = Quaternion.LookRotation(controlledMovement);
+            }
+            else
+            {
+                transform.LookAt(transform.position + cam.transform.forward);
+            }
         }
+    }
+    void PrintA()
+    {
+        print("a");
+    }
+    void PrintB()
+    {
+        print("b");
     }
 }

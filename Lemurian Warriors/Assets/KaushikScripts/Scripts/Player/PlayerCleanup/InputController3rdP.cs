@@ -1,6 +1,8 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class InputController3rdP : MonoBehaviour
 {
@@ -16,10 +18,6 @@ public class InputController3rdP : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.mousePresent)
-        {
-            mouseMovement?.Invoke(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
-        }
         if (Input.GetMouseButtonDown(0))
         {
             LeftClick?.Invoke();
@@ -40,18 +38,23 @@ public class InputController3rdP : MonoBehaviour
         {
             PrevSpell?.Invoke();
         }
+        Sprint?.Invoke(Input.GetKey(KeyCode.LeftShift));
+
         directionalInput = Vector3.ClampMagnitude(Camera.main.transform.right * Input.GetAxis("Horizontal") + 
             VectorMath.ZeroY(Camera.main.transform.forward).normalized * Input.GetAxis("Vertical"), 1);
         Movement?.Invoke(directionalInput, Time.deltaTime);
-        Debug.Log(directionalInput);
     }
-    private void FixedUpdate()
+    private void LateUpdate()
     {
-        
+        if (Input.mousePresent)
+        {
+            mouseMovement?.Invoke(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"), Input.mouseScrollDelta.y * Time.deltaTime, Time.deltaTime);
+        }
     }
     public delegate void DelNoParams();
-    public delegate void MouseMovement(float inX, float inY);
+    public delegate void MouseMovement(float inX, float inY, float scroll, float time);
     public delegate void DelVect2(Vector3 v, float time);
+    public delegate void DelBool(bool b);
     public DelVect2 Movement;
     public MouseMovement mouseMovement;
     public DelNoParams LeftClick;
@@ -59,4 +62,5 @@ public class InputController3rdP : MonoBehaviour
     public DelNoParams RightClickUp;
     public DelNoParams NextSpell;
     public DelNoParams PrevSpell;
+    public DelBool Sprint;
 }

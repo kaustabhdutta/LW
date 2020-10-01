@@ -19,8 +19,6 @@ MonoBehaviour:
   origin: 1
   AOERadius: 1.25
   AOEDuration: 1.37
-  damType: 0
-  baseDamage: 2
   hitDuration: 0
   stat: 0
   statMultiplier: 0
@@ -29,19 +27,14 @@ MonoBehaviour:
   VFX: {fileID: 3015373495074178571, guid: 03a497cf2887f9642be76787bbdbdfc7, type: 3}
   clickToCast: 1
   lifetime: 0
-  castDelay: 1
-  endLag: 0
-  bufferTime: 0
-  totalCastTime: 1
   canMoveDuring: 0
   resetDestinationAfter: 0
   canCast: 1
   straightLine: 0
-  launchSpeed: 20
+  launchSpeed: 15
   gravScale: 9.81
   minAngle: 0
   VFXSpawnPos: {x: 0, y: 1, z: 0}
   aimObjScale: {x: 1, y: 1, z: 1}
-  Caster: {fileID: 0}
-  aimObject: {fileID: -927199367670048503, guid: c5685f56595634640ad175f1e7715476,
+  aimObject: {fileID: 6395028338210398515, guid: 9c784597b58037849b8f2b898ee2be0f,
     type: 3}

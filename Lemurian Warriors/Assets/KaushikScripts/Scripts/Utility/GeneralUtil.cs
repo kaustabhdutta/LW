@@ -27,4 +27,16 @@ public class GeneralUtil : MonoBehaviour
         }
     }
 
+    public RaycastHit DoLineCast(Ray ray, float distance, int layerMask)
+    {
+        RaycastHit hit;
+        Physics.Linecast(ray.origin, ray.origin + ray.direction * distance, out hit, layerMask);
+        return hit;
+    }
+    public RaycastHit DoLineCast(Vector3 start, Vector3 end, float distance, int layerMask)
+    {
+        RaycastHit hit;
+        Physics.Linecast(start, end, out hit, layerMask);
+        return hit;
+    }
 }

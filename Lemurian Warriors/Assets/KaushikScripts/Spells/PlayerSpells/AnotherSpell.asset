@@ -19,29 +19,22 @@ MonoBehaviour:
   origin: 0
   AOERadius: 1
   AOEDuration: 5
-  damType: 0
-  baseDamage: 0
   hitDuration: 0
   stat: 0
   statMultiplier: 0
   buffDuration: 0
   cooldownTime: 0.5
-  VFX: {fileID: 2835503829340943101, guid: 44919f94f3637744e8f4204d6a2085a7, type: 3}
+  VFX: {fileID: 3325833999469981107, guid: 25183f63f42074645a29ecafbe4577d0, type: 3}
   clickToCast: 1
   lifetime: 10.39
-  castDelay: 0
-  endLag: 0
-  bufferTime: 0
-  totalCastTime: 0
   canMoveDuring: 1
   resetDestinationAfter: 0
-  canCast: 0
+  canCast: 1
   straightLine: 1
   launchSpeed: 10
   gravScale: 9.81
   minAngle: 15.8
-  VFXSpawnPos: {x: 2, y: 1, z: 0}
+  VFXSpawnPos: {x: 2, y: 0, z: 0}
   aimObjScale: {x: 0.2, y: 0.2, z: 0.2}
-  Caster: {fileID: 0}
-  aimObject: {fileID: -927199367670048503, guid: c5685f56595634640ad175f1e7715476,
+  aimObject: {fileID: 6395028338210398515, guid: 9c784597b58037849b8f2b898ee2be0f,
     type: 3}
