@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Events;
 
 public class InputController3rdP : MonoBehaviour
@@ -18,6 +15,10 @@ public class InputController3rdP : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Roll?.Invoke();
+        }
         if (Input.GetMouseButtonDown(0))
         {
             LeftClick?.Invoke();
@@ -63,4 +64,5 @@ public class InputController3rdP : MonoBehaviour
     public DelNoParams NextSpell;
     public DelNoParams PrevSpell;
     public DelBool Sprint;
+    public DelNoParams Roll;
 }

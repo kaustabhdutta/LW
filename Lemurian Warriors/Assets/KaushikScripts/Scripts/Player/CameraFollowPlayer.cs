@@ -1,8 +1,4 @@
-﻿using BehaviorDesigner.Runtime.Tasks.Unity.UnityVector2;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.Rendering;
+﻿using UnityEngine;
 
 public class CameraFollowPlayer : MonoBehaviour
 {

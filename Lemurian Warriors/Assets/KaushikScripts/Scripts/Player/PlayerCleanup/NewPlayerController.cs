@@ -4,8 +4,6 @@
 //using System.Collections.Generic;
 //using TMPro;
 //using TreeEditor;
-using TMPro;
-using UnityEditor.UI;
 using UnityEngine;
 using UnityEngine.AI;
 [RequireComponent(typeof(NavMeshAgent))]
@@ -94,6 +92,7 @@ public class NewPlayerController : CharacterBase
             InputController3rdP.current.RightClickUp = RClickUp3rd;
             InputController3rdP.current.Movement = Move3rd;
             InputController3rdP.current.Sprint = Sprint;
+            InputController3rdP.current.Roll = Roll;
         }
         if (hurtboxManager == null)
         {
@@ -248,6 +247,10 @@ public class NewPlayerController : CharacterBase
                         {
                             tempAimPos = hitInfo.point;
                         }
+                        else
+                        {
+                            tempAimPos = cam.transform.position + cam.transform.forward * 100;
+                        }
                     }
                     //determine target position for self cast AOE spells
                     else if (spells[toCast].Type == NewSpell.SpellType.AOE && spells[toCast].origin == NewSpell.AOESpellOrigin.Self)
@@ -304,14 +307,28 @@ public class NewPlayerController : CharacterBase
     {
         if (canAct)
         {
-            canAct = false;
-            canBuffer = false;
-            navAgent.acceleration = 100000000;
-            navAgent.speed = rollSpeed;
-            navAgent.isStopped = true;
-            transform.rotation = Quaternion.LookRotation(VectorMath.ZeroY(GetMousePosition() - transform.position), Vector3.up);
-            rolling = true;
-            anim.SetInteger("State", (int)AnimStates.Roll);
+            if (topDown)
+            {
+                canAct = false;
+                canBuffer = false;
+                navAgent.acceleration = 100000000;
+                navAgent.speed = rollSpeed;
+                navAgent.isStopped = true;
+                transform.rotation = Quaternion.LookRotation(VectorMath.ZeroY(GetMousePosition() - transform.position), Vector3.up);
+                rolling = true;
+                anim.SetInteger("State", (int)AnimStates.Roll);
+            }
+            else
+            {
+                canAct = false;
+                canBuffer = false;
+                rolling = true;
+                anim.SetInteger("State", (int)AnimStates.Roll);
+                if (aiming && controlledMovement != Vector3.zero)
+                {
+                    transform.LookAt(transform.position + controlledMovement);
+                }
+            }
             //Invoke("EndRoll", 0.5f);
         }
         else if (canBuffer)
@@ -322,9 +339,13 @@ public class NewPlayerController : CharacterBase
     void EndRoll()
     {
         rolling = false;
-        navAgent.speed = sprinting ? sprintSpeed : walkSpeed;
-        navAgent.destination = transform.position;
-        navAgent.isStopped = false;
+        controlledMovement = Vector3.zero;
+        if (topDown)
+        {
+            navAgent.speed = sprinting ? sprintSpeed : walkSpeed;
+            navAgent.destination = transform.position;
+            navAgent.isStopped = false;
+        }
     }
     protected override void TakeDamage(Hitbox hit)
     {
@@ -378,7 +399,10 @@ public class NewPlayerController : CharacterBase
         }
         else
         {
-            transform.rotation = Quaternion.LookRotation(VectorMath.ZeroY(target - transform.position), Vector3.up);
+            if (topDown)
+            {
+                transform.rotation = Quaternion.LookRotation(VectorMath.ZeroY(target - transform.position), Vector3.up);
+            }
             canMove = false;
             anim.SetInteger("State", (int)AnimStates.Melee);
             anim.SetInteger("Atk Num", currentMelee);

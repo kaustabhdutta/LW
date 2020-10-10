@@ -1,8 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using System;
-using System.Security.Policy;
+﻿using UnityEngine;
 
 public class InputController : MonoBehaviour
 {
