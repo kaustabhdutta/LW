@@ -70,8 +70,9 @@ public class Hurtbox : MonoBehaviour
                 foreach (Hitbox h in col.gameObject.GetComponents<Hitbox>())
                 {
                     //if the was in the hitbox's collider list and this and the hitbox aren't on the same team, and the manager isn't immune to it. Goes in order in the editor.
-                    if (h.colliders.Contains<Collider>(col.collider) && h.bPlayer != isPlayer && (manager != null ? !manager.immune.Contains<Hitbox>(h) : true))
+                    if (h.colliders.Contains(col.collider) && h.bPlayer != isPlayer && (manager != null ? !manager.immune.Contains<Hitbox>(h) : true))
                     {
+                        print(name + " got hit");
                         hit = h;
                     }
                 }
