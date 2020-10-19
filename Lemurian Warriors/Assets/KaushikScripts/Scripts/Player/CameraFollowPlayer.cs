@@ -13,13 +13,11 @@ public class CameraFollowPlayer : MonoBehaviour
     float distToPlayer;
     float aimDistToPlayer;
     float absDistToPlayer;
+    bool aiming;
     private Vector3 Displacement;
     [Range(0.1f, 1)]
     public float smoothFactor;
-    [SerializeField][Range(-180, 180)]
-    private float startX = 180;
-    [SerializeField][Range(0, 90)]
-    private float startY = 45;
+
     private float currentX;
     private float currentY;
     [SerializeField]
@@ -51,7 +49,6 @@ public class CameraFollowPlayer : MonoBehaviour
         transform.rotation = Quaternion.LookRotation(vectorToPlayer);
         transform.position = toFollow.camLookAt.position - vectorToPlayer / vectorToPlayer.magnitude * distToPlayer;
         InputController3rdP.current.mouseMovement = UpdateCam;
-        UpdateCam(startX / camRateX, -startY / camRateY, 0, 1 / 60);
 
     }
     private void LateUpdate()
@@ -71,6 +68,7 @@ public class CameraFollowPlayer : MonoBehaviour
         
         if (toFollow.aiming)
         {
+            aiming = true;
             distToPlayer = Mathf.Clamp(distToPlayer - scroll * scrollRate, aimMinDist, aimMaxDist);
             if(absDistToPlayer != distToPlayer)
             {
@@ -79,6 +77,7 @@ public class CameraFollowPlayer : MonoBehaviour
         }
         else
         {
+            aiming = false;
             aimDistToPlayer = Mathf.Clamp(aimDistToPlayer - scroll * scrollRate, minDistanceToPlayer, maxDistanceToPlayer);
             if (absDistToPlayer != aimDistToPlayer)
             {

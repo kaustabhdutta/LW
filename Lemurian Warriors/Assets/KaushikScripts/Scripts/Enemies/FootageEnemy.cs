@@ -30,22 +30,15 @@ public class FootageEnemy : EnemyBase
         if(damCon.currentHealth <= 0)
         {
             state = States.Dead;
-            navAgent.enabled = false;
-            canAct = false;
         }
         if (canAct)
         {
-            navAgent.enabled = true;
             switch (state)
             {
                 case States.Idle:
-                    if (navAgent.isOnNavMesh && navAgent.enabled)
-                    {
-                        navAgent.destination = player.transform.position;
-                    }
+                    navAgent.destination = player.transform.position;
                     if ((player.transform.position - transform.position).magnitude <= attackRange)
                     {
-                        transform.LookAt(player.transform);
                         state = States.Melee;
                     }
                     break;
@@ -57,7 +50,7 @@ public class FootageEnemy : EnemyBase
 
                     break;
                 case States.Dead:
-                    
+
                     break;
             }
         }
@@ -85,10 +78,7 @@ public class FootageEnemy : EnemyBase
         canAct = false;
         navAgent.speed = 0;
         navAgent.velocity = Vector3.zero;
-        if (state != States.Dead)
-        {
-            navAgent.destination = transform.position;
-        }
+        navAgent.destination = transform.position;
     }
     public void BackToIdle()
     {
