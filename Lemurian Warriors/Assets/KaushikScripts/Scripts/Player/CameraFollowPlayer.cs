@@ -21,6 +21,12 @@ public class CameraFollowPlayer : MonoBehaviour
     private float currentX;
     private float currentY;
     [SerializeField]
+    [Range(-180, 180)]
+    float startX;
+    [SerializeField]
+    [Range(-90, 90)]
+    float startY;
+    [SerializeField]
     private float camRateX = 1;
     [SerializeField]
     private float camRateY = 1;
@@ -49,7 +55,7 @@ public class CameraFollowPlayer : MonoBehaviour
         transform.rotation = Quaternion.LookRotation(vectorToPlayer);
         transform.position = toFollow.camLookAt.position - vectorToPlayer / vectorToPlayer.magnitude * distToPlayer;
         InputController3rdP.current.mouseMovement = UpdateCam;
-
+        UpdateCam(startX / camRateX, -startY / camRateY, 0, 0);
     }
     private void LateUpdate()
     {
