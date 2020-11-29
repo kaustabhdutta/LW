@@ -30,9 +30,11 @@ public class FootageEnemy : EnemyBase
         if(damCon.currentHealth <= 0)
         {
             state = States.Dead;
+            navAgent.enabled = false;
         }
         if (canAct)
         {
+            navAgent.enabled = true;
             switch (state)
             {
                 case States.Idle:
@@ -44,6 +46,7 @@ public class FootageEnemy : EnemyBase
                     break;
                 case States.Melee:
                     CanActFalse();
+                    transform.LookAt(player.transform);
                     anim.Play("Melee", -1, 0f);
                     break;
                 case States.Hurt:
@@ -78,7 +81,10 @@ public class FootageEnemy : EnemyBase
         canAct = false;
         navAgent.speed = 0;
         navAgent.velocity = Vector3.zero;
-        navAgent.destination = transform.position;
+        if (navAgent.enabled)
+        {
+            navAgent.destination = transform.position;
+        }
     }
     public void BackToIdle()
     {

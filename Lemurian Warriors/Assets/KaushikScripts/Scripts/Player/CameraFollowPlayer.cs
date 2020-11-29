@@ -63,7 +63,7 @@ public class CameraFollowPlayer : MonoBehaviour
         {
             Vector3 newPos = toFollow.camLookAt.position - vectorToPlayer.normalized * distToPlayer;
             transform.position = Vector3.Slerp(transform.position, newPos, smoothFactor);
-            transform.LookAt(toFollow.transform);
+            transform.LookAt(toFollow.camLookAt.transform);
         }
         //transform.rotation = Quaternion.LookRotation(ToFollow.transform.position - transform.position, Vector3.Cross(Vector3.Cross(ToFollow.transform.position - transform.position, Vector3.up), ToFollow.transform.position - transform.position));
     }
@@ -74,7 +74,6 @@ public class CameraFollowPlayer : MonoBehaviour
         
         if (toFollow.aiming)
         {
-            aiming = true;
             distToPlayer = Mathf.Clamp(distToPlayer - scroll * scrollRate, aimMinDist, aimMaxDist);
             if(absDistToPlayer != distToPlayer)
             {
@@ -83,7 +82,6 @@ public class CameraFollowPlayer : MonoBehaviour
         }
         else
         {
-            aiming = false;
             aimDistToPlayer = Mathf.Clamp(aimDistToPlayer - scroll * scrollRate, minDistanceToPlayer, maxDistanceToPlayer);
             if (absDistToPlayer != aimDistToPlayer)
             {
